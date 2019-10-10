@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-<<<<<<< HEAD
     "node": "8.12.0"
-=======
-    "node": "8.12.0" 
->>>>>>> 76acf680d846588b4c62f6688a0a7397a6c6e40d
   },
   "main": "index.js",
   "scripts": {
