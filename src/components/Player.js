@@ -26,6 +26,7 @@ class Player extends React.Component {
 			this.setState({ playing: false });
 		}
 		console.log("player ready");
+		this.state.player.setPlaybackQuality("tiny");
 		//console.log(this.state.player);
 	};
 
