@@ -24,7 +24,7 @@ class SongsList extends React.Component {
 			});
 		} else {
 			return (
-				<div className="center large-text text-light position-top-abs transition-smooth">
+				<div className="center large-text text-light position-top-fixed transition-smooth">
 					Search for your favourite tracks
 				</div>
 			);

@@ -6,19 +6,19 @@
 
 @font-face {
 	font-family: "OpenSans-Regular";
-	src: url("./fonts/OpenSans-Regular.ttf");
+	src: url("/OpenSans-Regular.4f32e784.ttf");
 }
 @font-face {
 	font-family: "OpenSans-SemiBold";
-	src: url("./fonts/OpenSans-SemiBold.ttf");
+	src: url("/OpenSans-SemiBold.492874b3.ttf");
 }
 @font-face {
 	font-family: "DMSans-Regular";
-	src: url("./fonts/DMSans-Regular.ttf");
+	src: url("/DMSans-Regular.51277dd6.ttf");
 }
 @font-face {
 	font-family: "DMSans-Medium";
-	src: url("./fonts/DMSans-Medium.ttf");
+	src: url("/DMSans-Medium.4e4c8d12.ttf");
 }
 
 body {
@@ -57,3 +57,5 @@ body {
 .top-margin {
 	margin-top: 12px;
 }
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */

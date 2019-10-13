@@ -42,6 +42,10 @@ class Player extends React.Component {
 		clearInterval(this.interval);
 	};
 
+	pauseSong = () => {
+		this.state.player.pauseVideo();
+	};
+
 	renderPlayerControls = () => {
 		clearInterval(this.interval);
 
