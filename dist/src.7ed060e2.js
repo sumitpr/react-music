@@ -33925,7 +33925,6 @@ class Player extends _react.default.Component {
     });
 
     _defineProperty(this, "playSong", () => {
-      this.state.player.mute();
       this.state.player.playVideo();
       this.setState({
         playing: true

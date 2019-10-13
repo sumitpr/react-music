@@ -31,7 +31,6 @@ class Player extends React.Component {
 	};
 
 	playSong = () => {
-		this.state.player.mute();
 		this.state.player.playVideo();
 		this.setState({ playing: true });
 		
