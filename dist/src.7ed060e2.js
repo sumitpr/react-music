@@ -33925,6 +33925,7 @@ class Player extends _react.default.Component {
     });
 
     _defineProperty(this, "playSong", () => {
+      this.state.player.mute();
       this.state.player.playVideo();
       this.setState({
         playing: true
@@ -33999,6 +34000,7 @@ class Player extends _react.default.Component {
         height: "30",
         width: "60",
         src: `https://www.youtube.com/embed/${this.props.song.id.videoId}?enablejsapi=1`,
+        allow: "autoplay",
         onLoad: () => {
           this.onYouTubeIframeAPIReady();
         }
