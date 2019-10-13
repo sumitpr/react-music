@@ -100,8 +100,8 @@ class Player extends React.Component {
 					{this.renderPlayerControls()}
 					<iframe
 						id="player-container"
-						height="300"
-						width="600"
+						height="30"
+						width="60"
 						src={`https://www.youtube.com/embed/${this.props.song.id.videoId}?enablejsapi=1`}
 						onLoad={() => {
 							this.onYouTubeIframeAPIReady();
