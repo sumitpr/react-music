@@ -2,6 +2,12 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 @font-face {
@@ -45,7 +51,7 @@ body {
 
 .position-top-fixed {
 	position: fixed;
-	top: 35%;
+	top: 250px;
 	left: 50%;
 	transform: translate(-50%, -0%);
 }

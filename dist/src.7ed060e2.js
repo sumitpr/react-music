@@ -33996,9 +33996,9 @@ class Player extends _react.default.Component {
         className: "player"
       }, this.renderPlayerControls(), _react.default.createElement("iframe", {
         id: "player-container",
-        height: "30",
-        width: "60",
-        src: `https://www.youtube.com/embed/${this.props.song.id.videoId}?enablejsapi=1`,
+        height: "300",
+        width: "600",
+        src: `https://www.youtube.com/embed/${this.props.song.id.videoId}?autoplay=1&enablejsapi=1`,
         allow: "autoplay",
         onLoad: () => {
           this.onYouTubeIframeAPIReady();
