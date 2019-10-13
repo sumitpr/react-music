@@ -58,6 +58,7 @@
 	width: 23px;
 	border-radius: 50%;
 	cursor: pointer;
+	flex: 0 0 23px;
 }
 
 .light-icon {

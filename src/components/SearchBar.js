@@ -4,6 +4,7 @@ import "./SearchBar.css";
 
 class SearchBar extends React.Component {
 	state = { input: "" };
+	inputRef = React.createRef();
 
 	onInputChange = event => {
 		this.setState({ input: event.target.value });
@@ -12,6 +13,7 @@ class SearchBar extends React.Component {
 	onFormSubmit = event => {
 		event.preventDefault();
 		this.props.onSearchSubmit(this.state.input);
+		document.activeElement.blur();
 	};
 
 	render() {
@@ -23,6 +25,7 @@ class SearchBar extends React.Component {
 						placeholder="song, album or artist"
 						value={this.state.input}
 						onChange={this.onInputChange}
+						ref={this.inputRef}
 					/>
 				</form>
 			</div>

@@ -33720,6 +33720,8 @@ class SearchBar extends _react.default.Component {
       input: ""
     });
 
+    _defineProperty(this, "inputRef", _react.default.createRef());
+
     _defineProperty(this, "onInputChange", event => {
       this.setState({
         input: event.target.value
@@ -33729,6 +33731,7 @@ class SearchBar extends _react.default.Component {
     _defineProperty(this, "onFormSubmit", event => {
       event.preventDefault();
       this.props.onSearchSubmit(this.state.input);
+      document.activeElement.blur();
     });
   }
 
@@ -33741,7 +33744,8 @@ class SearchBar extends _react.default.Component {
       type: "text",
       placeholder: "song, album or artist",
       value: this.state.input,
-      onChange: this.onInputChange
+      onChange: this.onInputChange,
+      ref: this.inputRef
     })));
   }
 
