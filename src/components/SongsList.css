@@ -1,6 +1,7 @@
 .songs-list {
 	width: 90%;
 	margin: 14px auto 12px;
+	padding-bottom: 12px;
 	max-height: 60vh;
 	overflow-y: auto;
 }
