@@ -1,7 +1,7 @@
 .player {
 	position: absolute;
 	width: 100%;
-	bottom: 30px;
+	bottom: 0;
 	left: 0;
 	//padding: 30px;
 	background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9));
@@ -70,4 +70,15 @@
 
 #player-container {
 	display: none;
+}
+
+
+@media only screen 
+	and (min-device-width: 300px)
+	and (max-device-width: 568px) {
+
+	.player-controls {
+		min-height: 75px;
+	}
+
 }
