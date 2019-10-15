@@ -10,6 +10,7 @@
 		border: 0;
 		border-radius: 5px;
 		font-size: 1.3em;
+		text-transform: lowercase;
 		padding: 17px 12px 19px;
 		color: rgba(255, 255, 255, 0.78);
 		transition: background 0.5s; }
