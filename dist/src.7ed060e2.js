@@ -33865,6 +33865,8 @@ module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/images/stop.svg":[function(require,module,exports) {
 module.exports = "/stop.79348e9f.svg";
+},{}],"../src/components/images/pause.svg":[function(require,module,exports) {
+module.exports = "/pause.07491a91.svg";
 },{}],"../src/components/Player.js":[function(require,module,exports) {
 "use strict";
 
@@ -33881,6 +33883,8 @@ var _play = _interopRequireDefault(require("./images/play.svg"));
 
 var _stop = _interopRequireDefault(require("./images/stop.svg"));
 
+var _pause = _interopRequireDefault(require("./images/pause.svg"));
+
 var _Loader = _interopRequireDefault(require("./Loader"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -33894,7 +33898,8 @@ class Player extends _react.default.Component {
     _defineProperty(this, "state", {
       player: null,
       playing: false,
-      song: null
+      song: null,
+      paused: false
     });
 
     _defineProperty(this, "interval", null);
@@ -33927,7 +33932,8 @@ class Player extends _react.default.Component {
     _defineProperty(this, "playSong", () => {
       this.state.player.playVideo();
       this.setState({
-        playing: true
+        playing: true,
+        paused: false
       });
     });
 
@@ -33941,10 +33947,13 @@ class Player extends _react.default.Component {
 
     _defineProperty(this, "pauseSong", () => {
       this.state.player.pauseVideo();
+      this.setState({
+        paused: true
+      });
     });
 
     _defineProperty(this, "renderPlayerControls", () => {
-      clearInterval(this.interval);
+      clearInterval(this.interval); // Loading
 
       if (!this.state.player) {
         return _react.default.createElement("div", {
@@ -33953,7 +33962,8 @@ class Player extends _react.default.Component {
           loading: "true",
           theme: "dark"
         }));
-      }
+      } // Play button only
+
 
       if (!this.state.playing) {
         return _react.default.createElement("div", {
@@ -33963,12 +33973,31 @@ class Player extends _react.default.Component {
           className: "icon large-icon",
           onClick: this.playSong
         }));
-      }
+      } // Pause and stop buttons
+
 
       if (this.state.playing) {
+        if (this.state.paused) {
+          return _react.default.createElement("div", {
+            className: "player-controls"
+          }, _react.default.createElement("img", {
+            src: _play.default,
+            className: "icon large-icon",
+            onClick: this.playSong
+          }), _react.default.createElement("img", {
+            src: _stop.default,
+            className: "icon large-icon",
+            onClick: this.stopSong
+          }));
+        }
+
         return _react.default.createElement("div", {
           className: "player-controls"
         }, _react.default.createElement("img", {
+          src: _pause.default,
+          className: "icon large-icon",
+          onClick: this.pauseSong
+        }), _react.default.createElement("img", {
           src: _stop.default,
           className: "icon large-icon",
           onClick: this.stopSong
@@ -33998,7 +34027,7 @@ class Player extends _react.default.Component {
         id: "player-container",
         height: "300",
         width: "600",
-        src: `https://www.youtube.com/embed/${this.props.song.id.videoId}?autoplay=1&enablejsapi=1`,
+        src: `https://www.youtube.com/embed/${this.props.song.id.videoId}?enablejsapi=1`,
         allow: "autoplay",
         onLoad: () => {
           this.onYouTubeIframeAPIReady();
@@ -34017,7 +34046,7 @@ class Player extends _react.default.Component {
 
 var _default = Player;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Player.css":"../src/components/Player.css","./images/play.svg":"../src/components/images/play.svg","./images/stop.svg":"../src/components/images/stop.svg","./Loader":"../src/components/Loader.js"}],"../src/components/App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Player.css":"../src/components/Player.css","./images/play.svg":"../src/components/images/play.svg","./images/stop.svg":"../src/components/images/stop.svg","./images/pause.svg":"../src/components/images/pause.svg","./Loader":"../src/components/Loader.js"}],"../src/components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34147,7 +34176,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58333" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50550" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

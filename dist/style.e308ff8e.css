@@ -34,7 +34,7 @@ body {
 	position: relative;
 	//padding-top: 30px;
 	background: linear-gradient(to right bottom, rgba(0,0,0,0.88), rgba(0,0,0,1));
-	//overflow-y: hidden; }
+	overflow-y: hidden; }
 
 .center {
 	text-align: center;
