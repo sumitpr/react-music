@@ -33792,7 +33792,7 @@ class SongItem extends _react.default.Component {
       className: "song-details-container"
     }, _react.default.createElement("div", {
       className: "song-title"
-    }, this.props.song.snippet.title), _react.default.createElement("div", {
+    }, this.props.song.snippet.title.toLowerCase()), _react.default.createElement("div", {
       className: "song-channel"
     }, this.props.song.snippet.channelTitle)));
   }
@@ -33867,6 +33867,10 @@ module.hot.accept(reloadCSS);
 module.exports = "/stop.79348e9f.svg";
 },{}],"../src/components/images/pause.svg":[function(require,module,exports) {
 module.exports = "/pause.07491a91.svg";
+},{}],"../src/components/images/rewind.svg":[function(require,module,exports) {
+module.exports = "/rewind.a6bb0a63.svg";
+},{}],"../src/components/images/forward.svg":[function(require,module,exports) {
+module.exports = "/forward.1f9c52d9.svg";
 },{}],"../src/components/Player.js":[function(require,module,exports) {
 "use strict";
 
@@ -33884,6 +33888,10 @@ var _play = _interopRequireDefault(require("./images/play.svg"));
 var _stop = _interopRequireDefault(require("./images/stop.svg"));
 
 var _pause = _interopRequireDefault(require("./images/pause.svg"));
+
+var _rewind = _interopRequireDefault(require("./images/rewind.svg"));
+
+var _forward = _interopRequireDefault(require("./images/forward.svg"));
 
 var _Loader = _interopRequireDefault(require("./Loader"));
 
@@ -33926,7 +33934,7 @@ class Player extends _react.default.Component {
       }
 
       console.log("player ready");
-      this.state.player.setPlaybackQuality("tiny"); //console.log(this.state.player);
+      this.state.player.setPlaybackQuality("tiny");
     });
 
     _defineProperty(this, "playSong", () => {
@@ -33934,6 +33942,13 @@ class Player extends _react.default.Component {
       this.setState({
         playing: true,
         paused: false
+      });
+    });
+
+    _defineProperty(this, "pauseSong", () => {
+      this.state.player.pauseVideo();
+      this.setState({
+        paused: true
       });
     });
 
@@ -33945,11 +33960,14 @@ class Player extends _react.default.Component {
       clearInterval(this.interval);
     });
 
-    _defineProperty(this, "pauseSong", () => {
-      this.state.player.pauseVideo();
-      this.setState({
-        paused: true
-      });
+    _defineProperty(this, "rewindSong", () => {
+      const currentTime = this.state.player.getCurrentTime();
+      this.state.player.seekTo(currentTime - 10, true);
+    });
+
+    _defineProperty(this, "forwardSong", () => {
+      const currentTime = this.state.player.getCurrentTime();
+      this.state.player.seekTo(currentTime + 10, true);
     });
 
     _defineProperty(this, "renderPlayerControls", () => {
@@ -33977,6 +33995,7 @@ class Player extends _react.default.Component {
 
 
       if (this.state.playing) {
+        // IF PAUSED RETURN PLAY AND STOP BUTTONS ONLY
         if (this.state.paused) {
           return _react.default.createElement("div", {
             className: "player-controls"
@@ -33989,11 +34008,16 @@ class Player extends _react.default.Component {
             className: "icon large-icon",
             onClick: this.stopSong
           }));
-        }
+        } // IF NOT PAUSED RETURN PAUSE, STOP AND REWIND FORWARD BUTTONS
+
 
         return _react.default.createElement("div", {
           className: "player-controls"
         }, _react.default.createElement("img", {
+          src: _rewind.default,
+          className: "icon medium-icon",
+          onClick: this.rewindSong
+        }), _react.default.createElement("img", {
           src: _pause.default,
           className: "icon large-icon",
           onClick: this.pauseSong
@@ -34001,6 +34025,10 @@ class Player extends _react.default.Component {
           src: _stop.default,
           className: "icon large-icon",
           onClick: this.stopSong
+        }), _react.default.createElement("img", {
+          src: _forward.default,
+          className: "icon medium-icon",
+          onClick: this.forwardSong
         }));
       }
 
@@ -34046,7 +34074,7 @@ class Player extends _react.default.Component {
 
 var _default = Player;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Player.css":"../src/components/Player.css","./images/play.svg":"../src/components/images/play.svg","./images/stop.svg":"../src/components/images/stop.svg","./images/pause.svg":"../src/components/images/pause.svg","./Loader":"../src/components/Loader.js"}],"../src/components/App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Player.css":"../src/components/Player.css","./images/play.svg":"../src/components/images/play.svg","./images/stop.svg":"../src/components/images/stop.svg","./images/pause.svg":"../src/components/images/pause.svg","./images/rewind.svg":"../src/components/images/rewind.svg","./images/forward.svg":"../src/components/images/forward.svg","./Loader":"../src/components/Loader.js"}],"../src/components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

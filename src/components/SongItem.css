@@ -30,12 +30,12 @@
 	}
 
 	.song-details-container {
-		//float: left;
 		margin-left: 5px;
 	}
 
 	.song-title {
 		color: rgba(255, 255, 255, 0.85);
+		text-transform: capitalize;
 	}
 
 	.song-channel {

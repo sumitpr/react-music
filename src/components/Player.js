@@ -4,12 +4,16 @@ import "./Player.css";
 import play from "./images/play.svg";
 import stop from "./images/stop.svg";
 import pause from "./images/pause.svg";
+import rewind from "./images/rewind.svg";
+import forward from "./images/forward.svg";
+
 import Loader from "./Loader";
 
 class Player extends React.Component {
 	state = { player: null, playing: false, song: null, paused: false };
 	interval = null;
 
+	// INITIALIZE PLAYER - REGISTER IFRAME WITH YOUTUBE API
 	onYouTubeIframeAPIReady = () => {
 		const player = new YT.Player("player-container", {
 			events: {
@@ -22,18 +26,23 @@ class Player extends React.Component {
 		});
 	};
 
+	// PLAYER ACTIONS
 	onPlayerReady = () => {
 		if (this.state.song === null) {
 			this.setState({ playing: false });
 		}
 		console.log("player ready");
 		this.state.player.setPlaybackQuality("tiny");
-		//console.log(this.state.player);
 	};
 
 	playSong = () => {
 		this.state.player.playVideo();
 		this.setState({ playing: true, paused: false });
+	};
+
+	pauseSong = () => {
+		this.state.player.pauseVideo();
+		this.setState({ paused: true });
 	};
 
 	stopSong = () => {
@@ -42,11 +51,17 @@ class Player extends React.Component {
 		clearInterval(this.interval);
 	};
 
-	pauseSong = () => {
-		this.state.player.pauseVideo();
-		this.setState({ paused: true });
+	rewindSong = () => {
+		const currentTime = this.state.player.getCurrentTime();
+		this.state.player.seekTo(currentTime - 10, true);
 	};
 
+	forwardSong = () => {
+		const currentTime = this.state.player.getCurrentTime();
+		this.state.player.seekTo(currentTime + 10, true);
+	}
+
+	// RENDER PLAYER CONTROLS
 	renderPlayerControls = () => {
 		clearInterval(this.interval);
 
@@ -74,6 +89,8 @@ class Player extends React.Component {
 
 		// Pause and stop buttons
 		if (this.state.playing) {
+
+			// IF PAUSED RETURN PLAY AND STOP BUTTONS ONLY
 			if (this.state.paused) {
 				return (
 					<div className="player-controls">
@@ -91,8 +108,14 @@ class Player extends React.Component {
 				);
 			}
 
+			// IF NOT PAUSED RETURN PAUSE, STOP AND REWIND FORWARD BUTTONS
 			return (
 				<div className="player-controls">
+					<img
+						src={rewind}
+						className="icon medium-icon"
+						onClick={this.rewindSong}
+					/>
 					<img
 						src={pause}
 						className="icon large-icon"
@@ -102,6 +125,11 @@ class Player extends React.Component {
 						src={stop}
 						className="icon large-icon"
 						onClick={this.stopSong}
+					/>
+					<img
+						src={forward}
+						className="icon medium-icon"
+						onClick={this.forwardSong}
 					/>
 				</div>
 			);

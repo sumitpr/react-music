@@ -8,7 +8,7 @@
 	text-align: center;
 	border-radius: 4px 4px 0 0;
 	box-shadow: 0px -5px 30px rgba(255,255,255,0.2);
-	overflow-y: hidden; }
+	//overflow-y: hidden; }
 
 	.player iframe {
 		//display: none;
@@ -62,14 +62,15 @@
 .large-icon {
 	width: 70px;
 	height: auto;
-}	
+}
+
+.medium-icon {
+	width: 60px;
+	height: auto;
+}
 
 .dark {
 	background: rgba(0,0,0,0.9) !important;
-}
-
-#player-container {
-	display: none;
 }
 
 

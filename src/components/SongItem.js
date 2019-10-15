@@ -16,7 +16,7 @@ class SongItem extends React.Component{
 				<img src={play} alt="Play" className="light-icon icon-play" />
 				<div className="song-details-container">
 					<div className="song-title">
-						{this.props.song.snippet.title}
+						{(this.props.song.snippet.title).toLowerCase()}
 					</div>
 					<div className="song-channel">
 						{this.props.song.snippet.channelTitle}
